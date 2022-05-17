@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Tool;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Controllers
@@ -84,10 +85,7 @@ namespace Controllers
             throw new System.NotImplementedException();
         }
 
-        private void OpenInformation()
-        {
-            throw new System.NotImplementedException();
-        }
+        private void OpenInformation() => SceneManager.LoadScene(NameScene.InformationScene);
 
         private void GoExit()
         {
