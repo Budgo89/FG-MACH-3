@@ -75,10 +75,7 @@ namespace Controllers
             _stayButton.onClick.AddListener(Back);
         }
 
-        private void OpenNewGame()
-        {
-            throw new System.NotImplementedException();
-        }
+        private void OpenNewGame() => SceneManager.LoadScene(NameScene.GamePlay);
 
         private void OpenRecordsTable()
         {

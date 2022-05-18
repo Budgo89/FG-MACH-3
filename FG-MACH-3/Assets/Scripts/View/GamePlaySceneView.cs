@@ -1,0 +1,28 @@
+﻿using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace View
+{
+    internal class GamePlaySceneView : MonoBehaviour
+    {
+        [Header("BasicВuttons")]
+        [SerializeField] private Button _mainMenuButton;
+
+        [Header("AdditionalВuttons")] 
+        [SerializeField] private Button _onMenuButton;
+        [SerializeField] private Button _stayButton;
+
+        [Header("Text")] 
+        [SerializeField] private TMP_Text _movesText;
+        [SerializeField] private TMP_Text _glassesText;
+
+        public Button MainMenuButton => _mainMenuButton;
+        public Button OnMenuButton => _onMenuButton;
+        public Button StayButton => _stayButton;
+
+        public TMP_Text MovementsText => _movesText;
+        public TMP_Text GlassesText => _glassesText;
+
+    }
+}

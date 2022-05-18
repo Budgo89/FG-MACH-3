@@ -10,10 +10,10 @@ namespace Controllers
         private Camera _camera;
         private List<GameObject> _balloons;
 
-        public GamePlayController(Camera camera)
+        public GamePlayController(Camera camera, List<GameObject> balloons)
         {
             _camera = camera;
-            _balloons = new List<GameObject>();
+            _balloons = balloons;
         }
 
         public void Update()
@@ -29,11 +29,10 @@ namespace Controllers
             RaycastHit2D hit = Physics2D.Raycast(ray, Vector2.zero);
             if (hit.collider != null)
             {
-                var balloons = GetCollor(hit);
+                var balloons = GetColor(hit);
 
                 if(balloons != null)
                 {
-                    Debug.Log("Куда то попал" + balloons);
                     _balloons.Add(hit.collider.gameObject);
                     DoRaycast(hit, balloons);
                 }
@@ -55,26 +54,21 @@ namespace Controllers
 
         private void DoRaycast(RaycastHit2D hit, IBalloons color)
         {
-            List<RaycastHit2D> hit2Ds = Physics2D.CircleCastAll(hit.collider.gameObject.transform.position, 0.5f, Vector2.zero).ToList();
+            List<RaycastHit2D> hit2Ds = Physics2D.CircleCastAll(hit.collider.gameObject.transform.position, 0.6f, Vector2.zero).ToList();
             foreach (var hit2D in hit2Ds)
             {
-                var colorHit2D = GetCollor(hit2D);
+                var colorHit2D = GetColor(hit2D);
                 if (colorHit2D == null)
-                {
                     continue;
-                }
-                if (colorHit2D.Colors == color.Colors)
-                {
-                    if (!_balloons.Contains(hit2D.collider.gameObject))
-                    {
-                        Debug.Log("+");
-                        _balloons.Add(hit2D.collider.gameObject);
-                        DoRaycast(hit2D, color);
-                    }
-                }
+                if (colorHit2D.Colors != color.Colors) 
+                    continue;
+                if (_balloons.Contains(hit2D.collider.gameObject)) 
+                    continue;
+                _balloons.Add(hit2D.collider.gameObject);
+                DoRaycast(hit2D, color);
             }
         }
-        private IBalloons GetCollor(RaycastHit2D hit)
+        private IBalloons GetColor(RaycastHit2D hit)
         {
             var blue = hit.collider.GetComponent<Blue>();
             var red = hit.collider.GetComponent<Red>();
