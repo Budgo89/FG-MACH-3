@@ -77,10 +77,7 @@ namespace Controllers
 
         private void OpenNewGame() => SceneManager.LoadScene(NameScene.GamePlay);
 
-        private void OpenRecordsTable()
-        {
-            throw new System.NotImplementedException();
-        }
+        private void OpenRecordsTable() => SceneManager.LoadScene(NameScene.RecordsTable);
 
         private void OpenInformation() => SceneManager.LoadScene(NameScene.InformationScene);
 
