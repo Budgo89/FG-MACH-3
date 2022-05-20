@@ -15,14 +15,17 @@ namespace View
 
         [Header("Text")] 
         [SerializeField] private TMP_Text _movesText;
-        [SerializeField] private TMP_Text _glassesText;
-
+        [SerializeField] private TMP_Text _pointsText;
+        [SerializeField] private TMP_Text _resultText;
+        [SerializeField] private TMP_Text _stayText;
+        
         public Button MainMenuButton => _mainMenuButton;
         public Button OnMenuButton => _onMenuButton;
         public Button StayButton => _stayButton;
 
         public TMP_Text MovementsText => _movesText;
-        public TMP_Text GlassesText => _glassesText;
-
+        public TMP_Text PointsText => _pointsText;
+        public TMP_Text ResultText => _resultText;
+        public TMP_Text StayText => _stayText;
     }
 }

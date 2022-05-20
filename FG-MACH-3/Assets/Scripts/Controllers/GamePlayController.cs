@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using MonoBehaviours;
+using Tool;
 using UnityEngine;
 
 namespace Controllers
@@ -9,11 +10,13 @@ namespace Controllers
     {
         private Camera _camera;
         private List<GameObject> _balloons;
+        private MenuDetected _menuDetected;
 
-        public GamePlayController(Camera camera, List<GameObject> balloons)
+        public GamePlayController(Camera camera, List<GameObject> balloons, MenuDetected menuDetected)
         {
             _camera = camera;
             _balloons = balloons;
+            _menuDetected = menuDetected;
         }
 
         public void Update()
@@ -24,9 +27,14 @@ namespace Controllers
 
         private void Raycast()
         {
+            if (_menuDetected.IsVisible)
+            {
+                return;
+            }
             _balloons.Clear();
             var ray = _camera.ScreenPointToRay(Input.mousePosition).origin;
             RaycastHit2D hit = Physics2D.Raycast(ray, Vector2.zero);
+            
             if (hit.collider != null)
             {
                 var balloons = GetColor(hit);
@@ -43,18 +51,15 @@ namespace Controllers
 
         private void SetActiveBalloons()
         {
-            if (_balloons.Count >= 3)
+            foreach (var balloon in _balloons)
             {
-                foreach (var balloon in _balloons)
-                {
                     balloon.gameObject.SetActive(false);
-                }
             }
         }
 
         private void DoRaycast(RaycastHit2D hit, IBalloons color)
         {
-            List<RaycastHit2D> hit2Ds = Physics2D.CircleCastAll(hit.collider.gameObject.transform.position, 0.6f, Vector2.zero).ToList();
+            List<RaycastHit2D> hit2Ds = Physics2D.CircleCastAll(hit.collider.gameObject.transform.position, 0.5f, Vector2.zero).ToList();
             foreach (var hit2D in hit2Ds)
             {
                 var colorHit2D = GetColor(hit2D);

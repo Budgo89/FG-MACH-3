@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TMPro;
 using Tool;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,47 +8,60 @@ using View;
 
 namespace Controllers
 {
-    internal class GamePlayUiButtonController : BaseController
+    internal class GamePlayUiVictoryController : BaseController
     {
-        private GamePlaySceneView _view;
-        MenuDetected _menuDetected;
+        private const string StayText = "Повторить";
 
-        private Button _mainMenuButton;
+        private GamePlaySceneView _view;
+        private string _defeat;
+        private MenuDetected _menuDetected;
+
         private Button _onMenuButton;
         private Button _stayButton;
+        private Button _mainMenuButton;
+
+        private TMP_Text _resultText;
+        private TMP_Text _stayText;
+
         private List<Button> _balloons;
 
-        public GamePlayUiButtonController(GamePlaySceneView view, MenuDetected menuDetected)
+        public GamePlayUiVictoryController(GamePlaySceneView view, string defeat, MenuDetected menuDetected)
         {
             _view = view;
+            _defeat = defeat;
             _menuDetected = menuDetected;
-
-            _mainMenuButton = _view.MainMenuButton;
+            
             _stayButton = _view.StayButton;
             _onMenuButton = _view.OnMenuButton;
 
+            _resultText = _view.ResultText;
+            _stayText = _view.StayText;
+            _mainMenuButton = _view.MainMenuButton;
+
             SubscribeButton();
             SetActivButtons(_balloons);
+            _mainMenuButton.gameObject.SetActive(false);
+
+            _resultText.text = _defeat;
+            _stayText.text = StayText;
+            _menuDetected.IsVisible = true;
+            Time.timeScale = 0;
         }
 
         private void SubscribeButton()
         {
-            _mainMenuButton.onClick.AddListener(OpenAdditionalВuttons);
             _onMenuButton.onClick.AddListener(OpenMainScreen);
-            _stayButton.onClick.AddListener(Back);
+            _stayButton.onClick.AddListener(Repeat);
             _balloons = new List<Button>
             {
                 _stayButton,
                 _onMenuButton
             };
         }
-
-        private void Back()
+        private void Repeat()
         {
             Time.timeScale = 1;
-            SetActivButtons(_balloons);
-            _mainMenuButton.gameObject.SetActive(true);
-            _menuDetected.IsVisible = false;
+            SceneManager.LoadScene(NameScene.GamePlay);
         }
 
         private void OpenMainScreen()
@@ -55,15 +69,6 @@ namespace Controllers
             Time.timeScale = 1;
             SceneManager.LoadScene(NameScene.MainScreen);
         }
-
-        private void OpenAdditionalВuttons()
-        {
-            Time.timeScale = 0;
-            SetActivButtons(_balloons);
-            _mainMenuButton.gameObject.SetActive(false);
-            _menuDetected.IsVisible = true;
-        }
-
         private void SetActivButtons(List<Button> buttons)
         {
             foreach (var button in buttons)
@@ -80,7 +85,6 @@ namespace Controllers
         }
         protected override void OnDispose()
         {
-            _mainMenuButton.onClick.RemoveAllListeners();
             _onMenuButton.onClick.RemoveAllListeners();
             _stayButton.onClick.RemoveAllListeners();
         }
