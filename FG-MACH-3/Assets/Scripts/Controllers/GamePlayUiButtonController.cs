@@ -7,7 +7,7 @@ using View;
 
 namespace Controllers
 {
-    internal class GamePlayUiButtonController : BaseController
+    internal class GamePlayUiButtonController : GamePlayUiAbstractController
     {
         private GamePlaySceneView _view;
         MenuDetected _menuDetected;
@@ -64,20 +64,7 @@ namespace Controllers
             _menuDetected.IsVisible = true;
         }
 
-        private void SetActivButtons(List<Button> buttons)
-        {
-            foreach (var button in buttons)
-            {
-                if (button.gameObject.activeSelf)
-                {
-                    button.gameObject.SetActive(false);
-                }
-                else
-                {
-                    button.gameObject.SetActive(true);
-                }
-            }
-        }
+
         protected override void OnDispose()
         {
             _mainMenuButton.onClick.RemoveAllListeners();

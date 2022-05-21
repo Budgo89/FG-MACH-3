@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GamePlayScene.unity
     guid: e7f740c356b33db4ca22ebb822808b9c
+  - enabled: 1
+    path: Assets/Scenes/RecordsTable.unity
+    guid: cf1e9ec648118aa41bbecfa0ea4559de
   m_configObjects: {}

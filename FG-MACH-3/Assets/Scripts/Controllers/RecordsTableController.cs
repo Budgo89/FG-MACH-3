@@ -24,10 +24,10 @@ namespace Controllers
             _view = LoadView(placeForUi);
             _mainMenuButton = _view.MainMenuButton;
             _mainMenuButton.onClick.AddListener(OpenMaimMenu);
-            SetTablerecords();
+            SetTableRecords();
         }
 
-        private void SetTablerecords()
+        private void SetTableRecords()
         {
             _stringPoints = CsvParser.StartParser();
             for (int i = 0; i < _stringPoints.Count; i++)

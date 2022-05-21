@@ -71,7 +71,7 @@ namespace Controllers
 
         protected override void OnDispose()
         {
-
+            _gamePlayUiVictoryController.Dispose();
         }
     }
 }

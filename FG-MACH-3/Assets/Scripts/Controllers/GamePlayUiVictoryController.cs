@@ -8,7 +8,7 @@ using View;
 
 namespace Controllers
 {
-    internal class GamePlayUiVictoryController : BaseController
+    internal class GamePlayUiVictoryController : GamePlayUiAbstractController
     {
         private const string StayText = "Повторить";
 
@@ -68,20 +68,6 @@ namespace Controllers
         {
             Time.timeScale = 1;
             SceneManager.LoadScene(NameScene.MainScreen);
-        }
-        private void SetActivButtons(List<Button> buttons)
-        {
-            foreach (var button in buttons)
-            {
-                if (button.gameObject.activeSelf)
-                {
-                    button.gameObject.SetActive(false);
-                }
-                else
-                {
-                    button.gameObject.SetActive(true);
-                }
-            }
         }
         protected override void OnDispose()
         {

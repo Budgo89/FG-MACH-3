@@ -5,7 +5,7 @@ using View;
 
 namespace Controllers
 {
-    internal class GamePlayEndGameController : BaseController
+    internal class GamePlayEndGameController : GamePlayUiAbstractController
     {
         private GamePlaySceneView _view;
         private List<GameObject> _balloons;
@@ -18,6 +18,21 @@ namespace Controllers
             _balloons = balloons;
             _countBolls = countBolls;
             _menuDetected = menuDetected;
+        }
+
+        public void FixedUpdate()
+        {
+            if (Input.GetMouseButton(0))
+            {
+                foreach (var balloon in _balloons)
+                {
+                    _countBolls.Remove(balloon);
+                }
+                if (_countBolls.Count == 0)
+                {
+                    
+                }
+            }
         }
     }
 }
