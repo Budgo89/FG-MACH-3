@@ -45,8 +45,16 @@ namespace Controllers
 
         private void EarnPoints()
         {
-           _storagePoints.Points += _balloons.Count * _pointMultiplication;
-           _pointsText.text = _storagePoints.Points.ToString();
+            if (_balloons.Count > 2)
+            {
+                _storagePoints.Points += _balloons.Count * _pointMultiplication;
+                _pointsText.text = _storagePoints.Points.ToString();
+            }
+            else
+            {
+                _storagePoints.Points += _balloons.Count;
+                _pointsText.text = _storagePoints.Points.ToString();
+            }
         }
     }
 }

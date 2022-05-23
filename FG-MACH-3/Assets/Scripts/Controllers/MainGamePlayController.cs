@@ -38,13 +38,12 @@ namespace Controllers
         public void Update()
         {
             _gamePlayController.Update();
-            _gamePlayUiController.Update();
         }
 
         protected override void OnDispose()
         {
-            _gamePlayController.Dispose();
-            _gamePlayUiController.Dispose();
+            _gamePlayController?.Dispose();
+            _gamePlayUiController?.Dispose();
         }
 
         public void FixedUpdate()

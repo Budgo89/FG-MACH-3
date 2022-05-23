@@ -36,7 +36,7 @@ namespace Controllers
             _gamePlayUiButtonController = new GamePlayUiButtonController(_view, _menuDetected);
             _gamePlayUiMovesController = new GamePlayUiMovesController(_view, _balloons, _initialProfilePlayer, _menuDetected);
             _gamePlayUiPointsController = new GamePlayUiPointsController(_view, _balloons, _initialProfilePlayer, _storagePoints);
-            _gamePlayEndGameController = new GamePlayEndGameController(_view, _balloons, _countBolls, _menuDetected);
+            _gamePlayEndGameController = new GamePlayEndGameController(_view, _balloons, _countBolls, _menuDetected, _storagePoints);
         }
         private GamePlaySceneView LoadView(Transform placeForUi)
         {
@@ -46,23 +46,19 @@ namespace Controllers
 
             return objectView.GetComponent<GamePlaySceneView>();
         }
-
-        public void Update()
-        {
-            
-        }
-
+        
         protected override void OnDispose()
         {
-            _gamePlayUiButtonController.Dispose(); 
-            _gamePlayUiPointsController.Dispose();
-            _gamePlayUiMovesController.Dispose();
-            _gamePlayEndGameController.Dispose();
+            _gamePlayUiButtonController?.Dispose(); 
+            _gamePlayUiPointsController?.Dispose();
+            _gamePlayUiMovesController?.Dispose();
+            _gamePlayEndGameController?.Dispose();
         }
 
         public void FixedUpdate()
         {
             _gamePlayUiPointsController.FixedUpdate();
+            _gamePlayEndGameController.FixedUpdate();
             _gamePlayUiMovesController.FixedUpdate();
         }
     }

@@ -2,11 +2,11 @@
 {
     internal class StringPoint
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Data { get; set; }
-        public string Point { get; set; }
+        public int Point { get; set; }
 
-        public StringPoint(string id, string data, string point)
+        public StringPoint(int id, string data, int point)
         {
             Id = id;
             Data = data;

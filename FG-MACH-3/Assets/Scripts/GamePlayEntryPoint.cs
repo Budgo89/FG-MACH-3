@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Controllers;
 using MonoBehaviours;
 using Profile;
+using Tool;
 using UnityEngine;
 
 public class GamePlayEntryPoint : MonoBehaviour
@@ -17,11 +18,10 @@ public class GamePlayEntryPoint : MonoBehaviour
 
     public void Awake()
     {
-        _gamePlayController = new MainGamePlayController(_camera, _placeForUi, _initialProfilePlayer, _countBolls);
-        
+        CsvParser.DeleteRecords();
         _countBolls = new List<GameObject>();
         FillCountBolls();
-
+        _gamePlayController = new MainGamePlayController(_camera, _placeForUi, _initialProfilePlayer, _countBolls);
     }
 
     public void Update()

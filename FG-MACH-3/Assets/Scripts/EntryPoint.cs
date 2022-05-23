@@ -1,4 +1,5 @@
 ﻿using Controllers;
+using Tool;
 using UnityEngine;
 
 internal class EntryPoint : MonoBehaviour
@@ -11,6 +12,7 @@ internal class EntryPoint : MonoBehaviour
 
     private void Awake()
     {
+        CsvParser.DeleteRecords();
         _mainScreenController = new MainScreenController(_placeForUi);
     }
 

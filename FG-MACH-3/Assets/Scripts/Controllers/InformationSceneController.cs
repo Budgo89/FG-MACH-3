@@ -14,6 +14,7 @@ namespace Controllers
         private Information _information;
         private InformationSceneView _view;
         private Button _backButton;
+        private Button _developerButton;
 
         public InformationSceneController(Transform placeForUi, Information information)
         {
@@ -21,8 +22,15 @@ namespace Controllers
             _information = information;
             _view = LoadView(placeForUi);
             _backButton = _view.BackButton;
+            _developerButton = _view.DeveloperButton;
             _backButton.onClick.AddListener(OpenMainMenu);
+            _developerButton.onClick.AddListener(FollowLink);
             FillInInformation();
+        }
+
+        private void FollowLink()
+        {
+            Application.OpenURL(_information.Developer);
         }
 
         private void FillInInformation()
@@ -41,6 +49,12 @@ namespace Controllers
             AddGameObject(objectView);
 
             return objectView.GetComponent<InformationSceneView>();
+        }
+
+        protected override void OnDispose()
+        {
+            _backButton.onClick.RemoveAllListeners();
+            _developerButton.onClick.RemoveAllListeners();
         }
     }
 }
