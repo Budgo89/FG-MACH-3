@@ -592,6 +592,7 @@ MonoBehaviour:
   _initialProfilePlayer: {fileID: 11400000, guid: e8001d092ab7f3d45b10934da6332c04, type: 2}
   _camera: {fileID: 2113335325}
   _placeForUi: {fileID: 862605007}
+  _highlightingFirstMove: {fileID: 1814969011}
 --- !u!4 &537804964
 Transform:
   m_ObjectHideFlags: 0
@@ -911,6 +912,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdec97bd3b3f7024b803b665aca8cba1, type: 3}
+--- !u!1 &778400332 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 457535819993498628, guid: bdec97bd3b3f7024b803b665aca8cba1, type: 3}
+  m_PrefabInstance: {fileID: 778400331}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &778400333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778400332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bc963bc02430e941a592a2305da38f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &792867108
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1081,7 +1099,7 @@ GameObject:
   m_Component:
   - component: {fileID: 865373647}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: FirstMove
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2288,7 +2306,7 @@ GameObject:
   - component: {fileID: 1814969012}
   - component: {fileID: 1814969013}
   m_Layer: 0
-  m_Name: first move
+  m_Name: FirstMove
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

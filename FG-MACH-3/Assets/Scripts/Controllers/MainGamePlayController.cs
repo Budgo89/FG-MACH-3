@@ -15,12 +15,12 @@ namespace Controllers
 
         private List<GameObject> _balloons;
         private MenuDetected _menuDetected;
-
+        
         private readonly GamePlayController _gamePlayController;
         private readonly GamePlayUiController _gamePlayUiController;
         
 
-        public MainGamePlayController(Camera camera, Transform placeForUi, InitialProfilePlayer initialProfilePlayer, List<GameObject> countBolls)
+        public MainGamePlayController(Camera camera, Transform placeForUi, InitialProfilePlayer initialProfilePlayer, List<GameObject> countBolls, GameObject highlightingFirstMove)
         {
             _camera = camera;
             _placeForUi = placeForUi;
@@ -30,7 +30,7 @@ namespace Controllers
             _balloons = new List<GameObject>();
             _menuDetected = new MenuDetected();
 
-            _gamePlayController = new GamePlayController(_camera, _balloons, _menuDetected);
+            _gamePlayController = new GamePlayController(_camera, _balloons, _menuDetected, highlightingFirstMove);
             _gamePlayUiController = new GamePlayUiController(_placeForUi, _balloons, _initialProfilePlayer, _menuDetected, _countBolls);
         }
 

@@ -11,12 +11,16 @@ namespace Controllers
         private Camera _camera;
         private List<GameObject> _balloons;
         private MenuDetected _menuDetected;
+        private GameObject _highlightingFirstMove;
 
-        public GamePlayController(Camera camera, List<GameObject> balloons, MenuDetected menuDetected)
+        private bool _firstMoveFlag = true;
+
+        public GamePlayController(Camera camera, List<GameObject> balloons, MenuDetected menuDetected, GameObject highlightingFirstMove)
         {
             _camera = camera;
             _balloons = balloons;
             _menuDetected = menuDetected;
+            _highlightingFirstMove = highlightingFirstMove;
         }
 
         public void Update()
@@ -31,12 +35,23 @@ namespace Controllers
             {
                 return;
             }
-            _balloons.Clear();
+            
             var ray = _camera.ScreenPointToRay(Input.mousePosition).origin;
             RaycastHit2D hit = Physics2D.Raycast(ray, Vector2.zero);
-            
+            _balloons.Clear();
+
             if (hit.collider != null)
             {
+                if (_firstMoveFlag)
+                {
+                    var a = hit.collider.gameObject.GetComponent<FirstMove>();
+                    if (a == null)
+                    {
+                        return;
+                    }
+                    _firstMoveFlag = false;
+                    _highlightingFirstMove.gameObject.SetActive(false);
+                }
                 var balloons = GetColor(hit);
 
                 if(balloons != null)
