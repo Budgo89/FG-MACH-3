@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.IO;
-using Microsoft.VisualBasic.FileIO;
+//using Microsoft.VisualBasic.FileIO;
 using Models;
 using Profile;
 
@@ -12,17 +11,17 @@ namespace Tool
     {
         private const string RecordsTablePath = "Assets/Resources/RecordsTable/RecordsTable.csv";
         private const string NewStringPointPath = "Assets/Resources/RecordsTable/NewStringPoint.csv";
+
         public static List<StringPoint> StartParser()
         {
             List<StringPoint> stringPoints = new List<StringPoint>();
-            using (TextFieldParser tfp = new TextFieldParser(RecordsTablePath))
+            using (StreamReader sr = new StreamReader(RecordsTablePath))
             {
-                tfp.TextFieldType = FieldType.Delimited;
-                tfp.SetDelimiters(",");
-                while (!tfp.EndOfData)
+                while (!sr.EndOfStream)
                 {
-                    string[] fields = tfp.ReadFields();
-                    stringPoints.Add(new StringPoint( int.Parse( fields[0]), fields[1], int.Parse(fields[2])));
+                    string s = sr.ReadLine();
+                    string[] fields = s.Split(',');
+                    stringPoints.Add(new StringPoint(int.Parse(fields[0]), fields[1], int.Parse(fields[2])));
                 }
             }
 
@@ -43,18 +42,20 @@ namespace Tool
 
         private static void SetTableRecord(List<StringPoint> stringPoints, int count)
         {
-            var newStringPoint = $"{stringPoints[0].Id},{stringPoints[0].Data},{stringPoints[0].Point + Environment.NewLine}";
+            var newStringPoint =
+                $"{stringPoints[0].Id},{stringPoints[0].Data},{stringPoints[0].Point + Environment.NewLine}";
             File.WriteAllText(RecordsTablePath, newStringPoint);
             for (int i = 1; i < count; i++)
             {
-                newStringPoint = $"{stringPoints[i].Id},{stringPoints[i].Data},{stringPoints[i].Point + Environment.NewLine}";
+                newStringPoint =
+                    $"{stringPoints[i].Id},{stringPoints[i].Data},{stringPoints[i].Point + Environment.NewLine}";
                 File.AppendAllText(RecordsTablePath, newStringPoint);
             }
         }
 
         public static void SetRecord(StoragePoints storagePoints)
         {
-            var newStringPoint = $"0,{DateTime.Now.ToShortDateString() },{storagePoints.Points}";
+            var newStringPoint = $"0,{DateTime.Now.ToShortDateString()},{storagePoints.Points}";
             File.WriteAllText(NewStringPointPath, newStringPoint);
         }
 
@@ -65,21 +66,26 @@ namespace Tool
 
         public static StringPoint GetRecord()
         {
+            StringPoint stringPoint = new StringPoint();
             try
             {
-                using (TextFieldParser tfp = new TextFieldParser(NewStringPointPath))
+                using (StreamReader sr = new StreamReader(NewStringPointPath))
                 {
-                    tfp.TextFieldType = FieldType.Delimited;
-                    tfp.SetDelimiters(",");
-                    string[] fields = tfp.ReadFields();
-                    return new StringPoint(int.Parse(fields[0]), fields[1], int.Parse(fields[2]));
+                    while (!sr.EndOfStream)
+                    {
+                        string s = sr.ReadLine();
+                        string[] fields = s.Split(',');
+                        stringPoint = new StringPoint(int.Parse(fields[0]), fields[1], int.Parse(fields[2]));
+                    }
                 }
             }
             catch (Exception)
             {
                 return null;
             }
+
+            return stringPoint;
         }
     }
-    
+
 }

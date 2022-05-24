@@ -6,6 +6,10 @@
         public string Data { get; set; }
         public int Point { get; set; }
 
+        public StringPoint()
+        {
+        }
+
         public StringPoint(int id, string data, int point)
         {
             Id = id;
