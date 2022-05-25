@@ -12,7 +12,7 @@ internal class EntryPoint : MonoBehaviour
 
     private void Awake()
     {
-        //CsvParser.DeleteRecords();
+        CsvParser.DeleteRecords();
         CsvParser.StartParser();
         _mainScreenController = new MainScreenController(_placeForUi);
     }

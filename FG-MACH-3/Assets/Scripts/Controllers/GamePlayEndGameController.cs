@@ -10,14 +10,16 @@ namespace Controllers
 {
     internal class GamePlayEndGameController : BaseController
     {
-        private GamePlayUiVictoryController _gamePlayUiVictoryController;
-
         private GamePlaySceneView _view;
         private List<GameObject> _balloons;
         private List<GameObject> _countBolls;
         private MenuDetected _menuDetected;
         private StoragePoints _storagePoints;
+
+        private GamePlayUiVictoryController _gamePlayUiVictoryController;
+
         private string _defeat = "Победа, но очков вы не набрали";
+
 
         public GamePlayEndGameController(GamePlaySceneView view, List<GameObject> balloons, List<GameObject> countBolls, MenuDetected menuDetected, StoragePoints storagePoints)
         {

@@ -12,25 +12,22 @@ namespace Controllers
     internal class RecordsTableController : BaseController
     {
         private readonly ResourcePath _resourcePath = new ResourcePath("UI/RecordsTable");
-        private Transform _placeForUi;
+
         private RecordsTableView _view;
 
         private Button _mainMenuButton;
-
         private List<StringPoint> _stringPoints;
-
         private StringPoint _record;
         private int? _recordId;
+
 
         public RecordsTableController(Transform placeForUi)
         {
             _stringPoints = CsvParser.GetTableRecord();
-            _placeForUi = placeForUi;
             _view = LoadView(placeForUi);
             _mainMenuButton = _view.MainMenuButton;
             _mainMenuButton.onClick.AddListener(OpenMaimMenu);
             CheckForRecords();
-            
         }
 
         private void CheckForRecords()

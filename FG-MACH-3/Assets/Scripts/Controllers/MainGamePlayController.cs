@@ -12,7 +12,6 @@ namespace Controllers
         private Transform _placeForUi;
         private InitialProfilePlayer _initialProfilePlayer;
         private List<GameObject> _countBolls;
-        private Transform _ballStorage;
 
         private List<GameObject> _balloons;
         private MenuDetected _menuDetected;
@@ -32,7 +31,6 @@ namespace Controllers
             _placeForUi = placeForUi;
             _initialProfilePlayer = initialProfilePlayer;
             _countBolls = countBolls;
-            _ballStorage = ballStorage;
 
             _balloons = new List<GameObject>();
             _menuDetected = new MenuDetected();

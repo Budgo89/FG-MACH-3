@@ -5,6 +5,6 @@ namespace MonoBehaviours
 {
     internal class Blue : MonoBehaviour, IBalloons
     {
-        public Colors Colors { get; private set; } = Colors.Blue;
+        public Colors Colors { get; } = Colors.Blue;
     }
 }

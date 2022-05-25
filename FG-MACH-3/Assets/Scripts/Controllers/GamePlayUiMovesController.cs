@@ -19,6 +19,7 @@ namespace Controllers
 
         private string _defeat = "Порожение";
 
+
         public GamePlayUiMovesController(GamePlaySceneView view, List<GameObject> balloons, InitialProfilePlayer initialProfilePlayer, MenuDetected menuDetected)
         {
             _view = view;

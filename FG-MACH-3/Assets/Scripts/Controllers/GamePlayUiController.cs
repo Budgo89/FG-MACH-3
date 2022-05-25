@@ -9,6 +9,7 @@ namespace Controllers
     internal class GamePlayUiController : BaseController
     {
         private readonly ResourcePath _resourcePath = new ResourcePath("UI/UIGameScreen");
+
         private List<GameObject> _balloons;
         private InitialProfilePlayer _initialProfilePlayer;
         private List<GameObject> _countBolls;
@@ -16,12 +17,13 @@ namespace Controllers
         private MenuDetected _menuDetected;
         private StoragePoints _storagePoints;
 
+        private GamePlaySceneView _view;
+
         private GamePlayUiButtonController _gamePlayUiButtonController;
         private GamePlayUiPointsController _gamePlayUiPointsController;
         private GamePlayUiMovesController _gamePlayUiMovesController;
         private readonly GamePlayEndGameController _gamePlayEndGameController;
 
-        private GamePlaySceneView _view;
 
         public GamePlayUiController(Transform placeForUi, List<GameObject> balloons, InitialProfilePlayer initialProfilePlayer, MenuDetected menuDetected, List<GameObject> countBolls)
         {

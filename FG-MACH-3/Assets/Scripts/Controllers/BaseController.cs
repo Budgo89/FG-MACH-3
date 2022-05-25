@@ -1,6 +1,4 @@
-﻿
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -51,12 +49,8 @@ namespace Controllers
 
         protected virtual void OnDispose() { }
 
-
         protected void AddController(BaseController baseController) =>
             AddDisposableObject(baseController);
-
-        //protected void AddRepository(IRepository repository) =>
-        //    AddDisposableObject(repository);
 
         protected void AddGameObject(GameObject gameObject)
         {

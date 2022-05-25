@@ -17,6 +17,7 @@ namespace Controllers
         private Button _stayButton;
         private List<Button> _balloons;
 
+
         public GamePlayUiButtonController(GamePlaySceneView view, MenuDetected menuDetected)
         {
             _view = view;
@@ -27,7 +28,7 @@ namespace Controllers
             _onMenuButton = _view.OnMenuButton;
 
             SubscribeButton();
-            SetActivButtons(_balloons);
+            SetActiveButtons(_balloons);
         }
 
         private void SubscribeButton()
@@ -45,7 +46,7 @@ namespace Controllers
         private void Back()
         {
             Time.timeScale = 1;
-            SetActivButtons(_balloons);
+            SetActiveButtons(_balloons);
             _mainMenuButton.gameObject.SetActive(true);
             _menuDetected.IsVisible = false;
         }
@@ -59,12 +60,11 @@ namespace Controllers
         private void OpenAdditionalВuttons()
         {
             Time.timeScale = 0;
-            SetActivButtons(_balloons);
+            SetActiveButtons(_balloons);
             _mainMenuButton.gameObject.SetActive(false);
             _menuDetected.IsVisible = true;
         }
-
-
+        
         protected override void OnDispose()
         {
             _mainMenuButton.onClick.RemoveAllListeners();

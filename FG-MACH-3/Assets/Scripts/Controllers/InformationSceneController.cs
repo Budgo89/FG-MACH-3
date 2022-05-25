@@ -10,15 +10,16 @@ namespace Controllers
     internal class InformationSceneController : BaseController
     {
         private readonly ResourcePath _resourcePath = new ResourcePath("UI/Information");
-        private Transform _placeForUi;
+
         private Information _information;
+
         private InformationSceneView _view;
         private Button _backButton;
         private Button _developerButton;
 
+
         public InformationSceneController(Transform placeForUi, Information information)
         {
-            _placeForUi = placeForUi;
             _information = information;
             _view = LoadView(placeForUi);
             _backButton = _view.BackButton;

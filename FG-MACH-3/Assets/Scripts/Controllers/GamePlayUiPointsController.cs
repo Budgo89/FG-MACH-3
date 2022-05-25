@@ -16,6 +16,7 @@ namespace Controllers
         private TMP_Text _pointsText;
         private int _pointMultiplication;
 
+
         public GamePlayUiPointsController(GamePlaySceneView view, List<GameObject> balloons, InitialProfilePlayer initialProfilePlayer, StoragePoints storagePoints)
         {
             _view = view;

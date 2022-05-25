@@ -19,6 +19,7 @@ public class GamePlayEntryPoint : MonoBehaviour
 
     private MainGamePlayController _gamePlayController;
 
+
     public void Awake()
     {
         CsvParser.DeleteRecords();

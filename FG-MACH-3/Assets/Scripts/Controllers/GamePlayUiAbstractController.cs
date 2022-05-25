@@ -5,7 +5,7 @@ namespace Controllers
 {
     abstract class GamePlayUiAbstractController : BaseController
     {
-        internal void SetActivButtons(List<Button> buttons)
+        internal void SetActiveButtons(List<Button> buttons)
         {
             foreach (var button in buttons)
             {

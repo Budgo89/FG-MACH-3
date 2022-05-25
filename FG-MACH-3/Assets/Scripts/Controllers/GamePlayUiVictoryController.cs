@@ -39,7 +39,7 @@ namespace Controllers
             _mainMenuButton = _view.MainMenuButton;
 
             SubscribeButton();
-            SetActivButtons(_balloons);
+            SetActiveButtons(_balloons);
             _mainMenuButton.gameObject.SetActive(false);
 
             _resultText.text = _defeat;

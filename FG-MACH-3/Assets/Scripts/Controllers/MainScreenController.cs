@@ -9,7 +9,6 @@ namespace Controllers
     internal class MainScreenController : BaseController
     {
         private readonly ResourcePath _resourcePath = new ResourcePath("UI/Main");
-        private Transform _placeForUi;
 
         private MainScreenView _view;
 
@@ -17,15 +16,15 @@ namespace Controllers
         private Button _recordsTableButton;
         private Button _aboutProgramButton;
         private Button _exitButton;
-        private List<Button> _buttonList;
-
         private Button _logOffButton;
         private Button _stayButton;
+
+        private List<Button> _buttonList;
         private List<Button> _additionalButtonsList;
+
 
         public MainScreenController(Transform placeForUi)
         {
-            _placeForUi = placeForUi;
             _view = LoadView(placeForUi);
             GetButton(_view);
             SubscribeButton();

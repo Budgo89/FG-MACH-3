@@ -16,6 +16,7 @@ namespace Controllers
 
         private bool _firstMoveFlag = true;
 
+
         public GamePlayController(Camera camera, List<GameObject> balloons, MenuDetected menuDetected, GameObject highlightingFirstMove, Transform ballStorage)
         {
             _camera = camera;
@@ -28,10 +29,10 @@ namespace Controllers
         public void Update()
         {
             if(Input.GetMouseButtonDown(0))
-                Raycast();
+                RayCast();
         }
 
-        private void Raycast()
+        private void RayCast()
         {
             if (_menuDetected.IsVisible)
             {
@@ -59,14 +60,14 @@ namespace Controllers
                 if(balloons != null)
                 {
                     _balloons.Add(hit.collider.gameObject);
-                    DoRaycast(hit, balloons);
+                    DoRayCast(hit, balloons);
                 }
             }
 
-            SetActiveBalloons();
+            DestructionBalls();
         }
 
-        private void SetActiveBalloons()
+        private void DestructionBalls()
         {
             foreach (var balloon in _balloons)
             {
@@ -74,7 +75,7 @@ namespace Controllers
             }
         }
 
-        private void DoRaycast(RaycastHit2D hit, IBalloons color)
+        private void DoRayCast(RaycastHit2D hit, IBalloons color)
         {
             List<RaycastHit2D> hit2Ds = Physics2D.CircleCastAll(hit.collider.gameObject.transform.position, 0.5f, Vector2.zero).ToList();
             foreach (var hit2D in hit2Ds)
@@ -87,7 +88,7 @@ namespace Controllers
                 if (_balloons.Contains(hit2D.collider.gameObject)) 
                     continue;
                 _balloons.Add(hit2D.collider.gameObject);
-                DoRaycast(hit2D, color);
+                DoRayCast(hit2D, color);
             }
         }
         private IBalloons GetColor(RaycastHit2D hit)

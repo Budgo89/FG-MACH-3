@@ -12,6 +12,7 @@ public class InformationSceneEntryPoint : MonoBehaviour
 
     private InformationSceneController _informationSceneController;
 
+
     void Awake()
     {
         _informationSceneController = new InformationSceneController(_placeForUi, _information);

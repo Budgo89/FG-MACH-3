@@ -13,6 +13,7 @@ namespace Tool
         private const string RecordsTable = "RecordsTable.csv";
         private const string NewStringPoint = "NewStringPoint.csv";
 
+
         public static void StartParser()
         {
             if (File.Exists(Application.persistentDataPath + "//" + RecordsTable))

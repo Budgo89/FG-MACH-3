@@ -8,6 +8,7 @@ internal class RecordsTableEnrtyPoint : MonoBehaviour
 
     private RecordsTableController _recordsTableController;
 
+
     private void Awake()
     {
         _recordsTableController = new RecordsTableController(_placeForUi);
