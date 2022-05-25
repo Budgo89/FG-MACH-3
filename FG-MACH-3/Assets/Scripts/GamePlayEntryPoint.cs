@@ -13,6 +13,8 @@ public class GamePlayEntryPoint : MonoBehaviour
     [SerializeField] private Camera _camera;
     [SerializeField] private Transform _placeForUi;
     [SerializeField] private GameObject _highlightingFirstMove;
+    [SerializeField] private Transform _ballStorage;
+
     private List<GameObject> _countBolls;
 
     private MainGamePlayController _gamePlayController;
@@ -22,7 +24,7 @@ public class GamePlayEntryPoint : MonoBehaviour
         CsvParser.DeleteRecords();
         _countBolls = new List<GameObject>();
         FillCountBolls();
-        _gamePlayController = new MainGamePlayController(_camera, _placeForUi, _initialProfilePlayer, _countBolls, _highlightingFirstMove);
+        _gamePlayController = new MainGamePlayController(_camera, _placeForUi, _initialProfilePlayer, _countBolls, _highlightingFirstMove, _ballStorage);
     }
 
     public void Update()

@@ -734,11 +734,6 @@ struct CaptureCollection_t38405272BD6A6DA77CD51487FD39624C6E95CC93  : public Run
 	CaptureU5BU5D_tC1C7568482C97A1529C2B061F0502A45FFFEEBD3* ____captures_2;
 };
 
-// Tool.CsvParser
-struct CsvParser_t43327A143CF0DEAF6834ECAE383B085A78BCA24E  : public RuntimeObject
-{
-};
-
 // System.Text.RegularExpressions.ExclusiveReference
 struct ExclusiveReference_t411F04D4CC440EB7399290027E1BBABEF4C28837  : public RuntimeObject
 {
@@ -4150,6 +4145,17 @@ struct ControllerColliderHit_tD0B734CBE0E2B089339B14600EB5A80295F6DE92_marshaled
 	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___m_MoveDirection_4;
 	float ___m_MoveLength_5;
 	int32_t ___m_Push_6;
+};
+
+// Tool.CsvParser
+struct CsvParser_t43327A143CF0DEAF6834ECAE383B085A78BCA24E  : public RuntimeObject
+{
+};
+
+struct CsvParser_t43327A143CF0DEAF6834ECAE383B085A78BCA24E_StaticFields
+{
+	// Tool.ResourcePath Tool.CsvParser::RecordsTablePath
+	ResourcePath_tDC13BBF6BCCDB0F0983BEDD08AD8F17AD3CE94EA ___RecordsTablePath_0;
 };
 
 // UnityEngine.Event
@@ -8999,9 +9005,9 @@ IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable3265[5] =
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable3266[2] = 
 {
 	static_cast<int32_t>(offsetof(RecordsTableView_t99C0E3A1761DE3E5DE118B05B30A7BFD07ACBE33, ____mainMenuButton_4)),static_cast<int32_t>(offsetof(RecordsTableView_t99C0E3A1761DE3E5DE118B05B30A7BFD07ACBE33, ____stringTables_5)),};
-IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable3267[2] = 
+IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable3267[3] = 
 {
-	0,0,};
+	static_cast<int32_t>(offsetof(CsvParser_t43327A143CF0DEAF6834ECAE383B085A78BCA24E_StaticFields, ___RecordsTablePath_0)),0,0,};
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable3268[2] = 
 {
 	static_cast<int32_t>(offsetof(CustomText_tDF675B64BC8E5061F7F058F9E46134A71550177F, ____text_4)),static_cast<int32_t>(offsetof(CustomText_tDF675B64BC8E5061F7F058F9E46134A71550177F, ____textMeshProUgui_5)),};

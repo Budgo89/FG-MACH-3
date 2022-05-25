@@ -12,15 +12,17 @@ namespace Controllers
         private List<GameObject> _balloons;
         private MenuDetected _menuDetected;
         private GameObject _highlightingFirstMove;
+        private Transform _ballStorage;
 
         private bool _firstMoveFlag = true;
 
-        public GamePlayController(Camera camera, List<GameObject> balloons, MenuDetected menuDetected, GameObject highlightingFirstMove)
+        public GamePlayController(Camera camera, List<GameObject> balloons, MenuDetected menuDetected, GameObject highlightingFirstMove, Transform ballStorage)
         {
             _camera = camera;
             _balloons = balloons;
             _menuDetected = menuDetected;
             _highlightingFirstMove = highlightingFirstMove;
+            _ballStorage = ballStorage;
         }
 
         public void Update()
@@ -68,7 +70,7 @@ namespace Controllers
         {
             foreach (var balloon in _balloons)
             {
-                    balloon.gameObject.SetActive(false);
+                    balloon.gameObject.transform.position = _ballStorage.position;
             }
         }
 

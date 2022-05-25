@@ -24,7 +24,7 @@ namespace Controllers
 
         public RecordsTableController(Transform placeForUi)
         {
-            _stringPoints = CsvParser.StartParser();
+            _stringPoints = CsvParser.GetTableRecord();
             _placeForUi = placeForUi;
             _view = LoadView(placeForUi);
             _mainMenuButton = _view.MainMenuButton;

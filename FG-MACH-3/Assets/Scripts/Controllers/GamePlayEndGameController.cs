@@ -45,7 +45,7 @@ namespace Controllers
 
         private void StartGameOver()
         {
-            var tableRecords = CsvParser.StartParser();
+            var tableRecords = CsvParser.GetTableRecord();
             var minRecords = tableRecords.Min(x => x.Point);
             if (_storagePoints.Points >= minRecords)
             {

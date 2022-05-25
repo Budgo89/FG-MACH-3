@@ -5307,11 +5307,6 @@ struct CryptoConvert_t676AC22DA6332E9936696ECC97197AB7B1BC7252  : public Runtime
 {
 };
 
-// Tool.CsvParser
-struct CsvParser_t43327A143CF0DEAF6834ECAE383B085A78BCA24E  : public RuntimeObject
-{
-};
-
 // System.Globalization.CultureData
 struct CultureData_tEEFDCF4ECA1BBF6C0C8C94EB3541657245598F9D  : public RuntimeObject
 {
@@ -29532,6 +29527,17 @@ struct Coroutine_t85EA685566A254C23F3FD77AB5BDFFFF8799596B_marshaled_pinvoke : p
 struct Coroutine_t85EA685566A254C23F3FD77AB5BDFFFF8799596B_marshaled_com : public YieldInstruction_tFCE35FD0907950EFEE9BC2890AC664E41C53728D_marshaled_com
 {
 	intptr_t ___m_Ptr_0;
+};
+
+// Tool.CsvParser
+struct CsvParser_t43327A143CF0DEAF6834ECAE383B085A78BCA24E  : public RuntimeObject
+{
+};
+
+struct CsvParser_t43327A143CF0DEAF6834ECAE383B085A78BCA24E_StaticFields
+{
+	// Tool.ResourcePath Tool.CsvParser::RecordsTablePath
+	ResourcePath_tDC13BBF6BCCDB0F0983BEDD08AD8F17AD3CE94EA ___RecordsTablePath_0;
 };
 
 // UnityEngine.CullingGroup
@@ -56955,7 +56961,7 @@ const Il2CppTypeDefinitionSizes g_typeDefinitionSize3265 = { sizeof(InformationS
 extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize3266;
 const Il2CppTypeDefinitionSizes g_typeDefinitionSize3266 = { sizeof(RecordsTableView_t99C0E3A1761DE3E5DE118B05B30A7BFD07ACBE33), -1, 0, 0 };
 extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize3267;
-const Il2CppTypeDefinitionSizes g_typeDefinitionSize3267 = { sizeof(CsvParser_t43327A143CF0DEAF6834ECAE383B085A78BCA24E), -1, 0, 0 };
+const Il2CppTypeDefinitionSizes g_typeDefinitionSize3267 = { sizeof(CsvParser_t43327A143CF0DEAF6834ECAE383B085A78BCA24E), -1, sizeof(CsvParser_t43327A143CF0DEAF6834ECAE383B085A78BCA24E_StaticFields), 0 };
 extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize3268;
 const Il2CppTypeDefinitionSizes g_typeDefinitionSize3268 = { sizeof(CustomText_tDF675B64BC8E5061F7F058F9E46134A71550177F), -1, 0, 0 };
 extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize3269;

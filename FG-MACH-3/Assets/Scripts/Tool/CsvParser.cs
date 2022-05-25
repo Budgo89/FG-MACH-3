@@ -1,30 +1,59 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-//using Microsoft.VisualBasic.FileIO;
 using Models;
 using Profile;
+using UnityEngine;
 
 namespace Tool
 {
     internal static class CsvParser
     {
-        private const string RecordsTablePath = "Assets/Resources/RecordsTable/RecordsTable.csv";
-        private const string NewStringPointPath = "Assets/Resources/RecordsTable/NewStringPoint.csv";
+        private static readonly ResourcePath RecordsTablePath = new ResourcePath("RecordsTable/RecordsTable");
+        private const string RecordsTable = "RecordsTable.csv";
+        private const string NewStringPoint = "NewStringPoint.csv";
 
-        public static List<StringPoint> StartParser()
+        public static void StartParser()
         {
-            List<StringPoint> stringPoints = new List<StringPoint>();
-            using (StreamReader sr = new StreamReader(RecordsTablePath))
+            if (File.Exists(Application.persistentDataPath + "//" + RecordsTable))
             {
-                while (!sr.EndOfStream)
+                return;
+            }
+            List<StringPoint> stringPoints = new List<StringPoint>();
+            var text = ResourcesLoader.LoadTextAsset(RecordsTablePath).text;
+
+            string[] fields = text.Split('\n', '\r');
+            foreach (var field in fields)
+            {
+                string[] f = field.Split(',');
+                if (f.Length > 2)
                 {
-                    string s = sr.ReadLine();
-                    string[] fields = s.Split(',');
-                    stringPoints.Add(new StringPoint(int.Parse(fields[0]), fields[1], int.Parse(fields[2])));
+                    stringPoints.Add(new StringPoint(int.Parse(f[0]), f[1], int.Parse(f[2])));
                 }
             }
 
+            using var filestreem = new StreamWriter(Application.persistentDataPath + "//" + RecordsTable);
+            foreach (var stringPoint in stringPoints)
+            {
+                var newStringPoint = $"{stringPoint.Id},{stringPoint.Data},{stringPoint.Point}";
+                filestreem.WriteLine(newStringPoint);
+            }
+        }
+
+        public static List<StringPoint> GetTableRecord()
+        {
+            List<StringPoint> stringPoints = new List<StringPoint>();
+            using var filestreem = new StreamReader(Application.persistentDataPath + "//" + RecordsTable);
+            while (!filestreem.EndOfStream)
+            {
+                var text = filestreem.ReadLine();
+                string[] f = text.Split(',');
+                if (f.Length > 2)
+                {
+                    stringPoints.Add(new StringPoint(int.Parse(f[0]), f[1], int.Parse(f[2])));
+                }
+
+            }
             return stringPoints;
         }
 
@@ -42,26 +71,24 @@ namespace Tool
 
         private static void SetTableRecord(List<StringPoint> stringPoints, int count)
         {
-            var newStringPoint =
-                $"{stringPoints[0].Id},{stringPoints[0].Data},{stringPoints[0].Point + Environment.NewLine}";
-            File.WriteAllText(RecordsTablePath, newStringPoint);
-            for (int i = 1; i < count; i++)
+            using var filestreem = new StreamWriter(Application.persistentDataPath + "//" + RecordsTable);
+            for (int i = 0; i < count; i++)
             {
-                newStringPoint =
-                    $"{stringPoints[i].Id},{stringPoints[i].Data},{stringPoints[i].Point + Environment.NewLine}";
-                File.AppendAllText(RecordsTablePath, newStringPoint);
+                var newStringPoint = $"{stringPoints[i].Id},{stringPoints[i].Data},{stringPoints[i].Point}";
+                filestreem.WriteLine(newStringPoint);
             }
         }
 
         public static void SetRecord(StoragePoints storagePoints)
         {
             var newStringPoint = $"0,{DateTime.Now.ToShortDateString()},{storagePoints.Points}";
-            File.WriteAllText(NewStringPointPath, newStringPoint);
+            using var filestreem = new StreamWriter(Application.persistentDataPath + "//" + NewStringPoint);
+            filestreem.Write(newStringPoint);
         }
 
         public static void DeleteRecords()
         {
-            File.Delete(NewStringPointPath);
+            File.Delete(Application.persistentDataPath + "//" + NewStringPoint);
         }
 
         public static StringPoint GetRecord()
@@ -69,14 +96,13 @@ namespace Tool
             StringPoint stringPoint = new StringPoint();
             try
             {
-                using (StreamReader sr = new StreamReader(NewStringPointPath))
+                using var filestreem = new StreamReader(Application.persistentDataPath + "//" + NewStringPoint);
+                var text = filestreem.ReadLine();
+                string[] fields = text.Split('\n', '\r');
+                foreach (var field in fields)
                 {
-                    while (!sr.EndOfStream)
-                    {
-                        string s = sr.ReadLine();
-                        string[] fields = s.Split(',');
-                        stringPoint = new StringPoint(int.Parse(fields[0]), fields[1], int.Parse(fields[2]));
-                    }
+                    string[] f = field.Split(',');
+                    stringPoint = new StringPoint(int.Parse(f[0]), f[1], int.Parse(f[2]));
                 }
             }
             catch (Exception)

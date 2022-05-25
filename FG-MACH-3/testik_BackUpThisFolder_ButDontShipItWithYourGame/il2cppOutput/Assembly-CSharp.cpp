@@ -589,6 +589,7 @@ IL2CPP_EXTERN_C RuntimeClass* AnimationCurve_tCBFFAAD05CEBB35EF8D8631BD99914BE1A
 IL2CPP_EXTERN_C RuntimeClass* BlueU5BU5D_t9D22559A40D3E4A66A1E6856DCDA00396ADDECE9_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* CharU5BU5D_t799905CF001DD5F13F7DBB310181FC4D8B7D0AAB_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* CharacterSelectionEvent_t5D7AF67F47A37175CF8615AD66DEC4A0AA021392_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* CsvParser_t43327A143CF0DEAF6834ECAE383B085A78BCA24E_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* DateTime_t66193957C73913903DDAD89FEDC46139BCA5802D_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Font_tC95270EA3198038970422D78B74A7F2E218A96B6_il2cpp_TypeInfo_var;
@@ -6554,14 +6555,16 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* Object_Instantiate_TisRuntimeO
 // T UnityEngine.Component::GetComponentInChildren<System.Object>()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* Component_GetComponentInChildren_TisRuntimeObject_mE483A27E876DE8E4E6901D6814837F81D7C42F65_gshared (Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3* __this, const RuntimeMethod* method) ;
 
-// System.Void Tool.CsvParser::DeleteRecords()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CsvParser_DeleteRecords_m05729FC939F31A926C7F37CA05A8123F17354B5E (const RuntimeMethod* method) ;
+// System.Void Tool.CsvParser::StartParser()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CsvParser_StartParser_mB9B809C5B8657A1A99ADA1B1DCB1D7A080DFBD97 (const RuntimeMethod* method) ;
 // System.Void Controllers.MainScreenController::.ctor(UnityEngine.Transform)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MainScreenController__ctor_m84310098EEBB31EED2F0158655693BFEE9981628 (MainScreenController_t3CB232B0BDDF1C732B74F805CF4587949084498F* __this, Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* ___placeForUi0, const RuntimeMethod* method) ;
 // System.Void Controllers.BaseController::Dispose()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BaseController_Dispose_m82B846F4EB40B1DFFD1E8DE27CB62CB2FC29A85B (BaseController_t31BD43898AA803AF4D398F42A4CD286FEABE4293* __this, const RuntimeMethod* method) ;
 // System.Void UnityEngine.MonoBehaviour::.ctor()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MonoBehaviour__ctor_m592DB0105CA0BC97AA1C5F4AD27B12D68A3B7C1E (MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71* __this, const RuntimeMethod* method) ;
+// System.Void Tool.CsvParser::DeleteRecords()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CsvParser_DeleteRecords_m05729FC939F31A926C7F37CA05A8123F17354B5E (const RuntimeMethod* method) ;
 // System.Void System.Collections.Generic.List`1<UnityEngine.GameObject>::.ctor()
 inline void List_1__ctor_m447372C1EF7141193B93090A77395B786C72C7BC (List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* __this, const RuntimeMethod* method)
 {
@@ -7320,12 +7323,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void EntryPoint_Awake_m7C897BBA4F445F768CDBE0
 	static bool s_Il2CppMethodInitialized;
 	if (!s_Il2CppMethodInitialized)
 	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&CsvParser_t43327A143CF0DEAF6834ECAE383B085A78BCA24E_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&MainScreenController_t3CB232B0BDDF1C732B74F805CF4587949084498F_il2cpp_TypeInfo_var);
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		// CsvParser.DeleteRecords();
-		CsvParser_DeleteRecords_m05729FC939F31A926C7F37CA05A8123F17354B5E(NULL);
+		// CsvParser.StartParser();
+		il2cpp_codegen_runtime_class_init_inline(CsvParser_t43327A143CF0DEAF6834ECAE383B085A78BCA24E_il2cpp_TypeInfo_var);
+		CsvParser_StartParser_mB9B809C5B8657A1A99ADA1B1DCB1D7A080DFBD97(NULL);
 		// _mainScreenController = new MainScreenController(_placeForUi);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = __this->____placeForUi_4;
 		MainScreenController_t3CB232B0BDDF1C732B74F805CF4587949084498F* L_1 = (MainScreenController_t3CB232B0BDDF1C732B74F805CF4587949084498F*)il2cpp_codegen_object_new(MainScreenController_t3CB232B0BDDF1C732B74F805CF4587949084498F_il2cpp_TypeInfo_var);
@@ -7371,6 +7376,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GamePlayEntryPoint_Awake_m36AB4A4E3385AA
 	static bool s_Il2CppMethodInitialized;
 	if (!s_Il2CppMethodInitialized)
 	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&CsvParser_t43327A143CF0DEAF6834ECAE383B085A78BCA24E_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&List_1__ctor_m447372C1EF7141193B93090A77395B786C72C7BC_RuntimeMethod_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&MainGamePlayController_tCD7E53230986BD1DA094E325FBED9807EC2D41B1_il2cpp_TypeInfo_var);
@@ -7378,6 +7384,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GamePlayEntryPoint_Awake_m36AB4A4E3385AA
 	}
 	{
 		// CsvParser.DeleteRecords();
+		il2cpp_codegen_runtime_class_init_inline(CsvParser_t43327A143CF0DEAF6834ECAE383B085A78BCA24E_il2cpp_TypeInfo_var);
 		CsvParser_DeleteRecords_m05729FC939F31A926C7F37CA05A8123F17354B5E(NULL);
 		// _countBolls = new List<GameObject>();
 		List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* L_0 = (List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B*)il2cpp_codegen_object_new(List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B_il2cpp_TypeInfo_var);
